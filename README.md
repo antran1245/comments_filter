@@ -1,8 +1,8 @@
 # Objective
 
-Use **ChatGPT** to filter out comments that contain just reactionary words or emojis and comments that are not.
+Use **ChatGPT** to filter out comments that contain just emoticons words or emojis and comments that are responsive, text, verbal, written, and remarks.
 
-Examples of Reactionary Comment:
+Examples of Emoticons Comment:
 - lol
 - lmao
 
