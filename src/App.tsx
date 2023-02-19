@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Heading from './components/Heading';
 import data from './data.json'
 import './App.css';
+import Comment from './components/Comment';
 
 interface AppProps {
   id: number;
@@ -10,13 +11,12 @@ interface AppProps {
 }
 
 function App() {
-  const [comments, setComment] = useState<AppProps[] | []>(data.comments)
-
+  const [comments, setComments] = useState<AppProps[] | []>(data.comments)
   return (
     <main className='container'>
       <div>
         <Heading comments={comments}/>
-        <div></div>
+        <Comment/>
       </div>
     </main>
   );
