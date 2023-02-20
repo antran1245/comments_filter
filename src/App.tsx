@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import Heading from './components/Heading';
+import Comment from './components/Comment';
+import List from './components/List';
 import data from './data.json'
 import './App.css';
-import Comment from './components/Comment';
 
 interface AppProps {
   id: number;
@@ -17,6 +18,7 @@ function App() {
       <div>
         <Heading comments={comments}/>
         <Comment/>
+        <List comments={comments}/>
       </div>
     </main>
   );

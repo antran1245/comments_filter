@@ -11,7 +11,7 @@ export default function Comment() {
           <input type="text" className='commentLine' placeholder='Add a comment...' autoFocus defaultValue={text} onChange={(e) => setText(e.target.value)} />
           <div className='buttonGroup'>
             <button className='cancel' onClick={() => setShow(true)}>Cancel</button>
-            <button className={`comment ${text === "" ? 'disable' : 'enable'}`}>Comment</button>
+            <button className={`commentButton ${text === "" ? 'disable' : 'enable'}`}>Comment</button>
           </div>
         </form>
       }
