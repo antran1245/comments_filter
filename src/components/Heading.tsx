@@ -1,6 +1,5 @@
 import sortIcon from '../assets/sort_icon.svg'
 
-
 interface HeadingProps {
   comments: {
     id: number;
@@ -12,9 +11,12 @@ interface HeadingProps {
 export default function Heading({comments} : HeadingProps) {
   return(
     <>
-      <h1>
-        Comment Section
-      </h1>
+      <div>
+        <h1>
+          Comment Section
+        </h1>
+        <p>Emoticons</p>
+      </div>
       <div className="countComment">
         <p>{comments.length !== 0 ? comments.length : ""} Comments</p>
         <div>
