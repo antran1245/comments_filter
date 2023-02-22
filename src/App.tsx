@@ -14,34 +14,41 @@ interface AppProps {
 function App() {
   const [comments, setComments] = useState<AppProps[] | []>(data.comments)
   const [emoticons, setEmoticons] = useState<AppProps[] | []>([])
+
   useEffect(() => {
-    let temp : any[] = []
-    const apiKey = process.env.REACT_APP_API_KEY
-    // for(let i = 0; i < comments.length; i++) {
-      // fetch('https://api.openai.com/v1/engines/davinci/completions', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //     'Authorization': 'Bearer '+apiKey
-      //   },
-      //   body: JSON.stringify({
-      //     prompt: "Please analyze this comment to determine if it is an emoticon comment or not:\n\n" + comments[0].body,
-      //     max_tokens: 1,
-      //     temperature: 0,
-      //     // model: "text-davinci-003",
-      //     stop: ["\n"]
-      //   })
-      // })
-      //   .then(response => response.json())
-      //   .then(data => {
-      //     console.log(data)
-      //     // if (data.choices[0].text) {
-      //     //   temp.push(comments[i])
-      //     // }
-      //   })
-      //   .catch(error => console.error(error))
-    // }
+    let temp = []
+    for(const  item of data.comments) {
+      temp.push(item.body)
+    }
     console.log(temp)
+    const apiKey = process.env.REACT_APP_API_KEY
+    fetch('https://api.openai.com/v1/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + apiKey
+      },
+      body: JSON.stringify({
+        prompt: `Emoticon is a representation of a facial expression such as:-) (representing a smile), formed by various combinations of keyboard characters and used to convey the writer's feelings or intended tone.
+        Context: Array of objects contain keys (id, date, body). 
+        Anaylze the array of objects ${data.comments} to see which key=body contain value=string that are not emoticon.`,
+        model: "text-davinci-003",
+        max_tokens: 256,
+        top_p: 1,
+        temperature: 0.7,
+        frequency_penalty: 0,
+        presence_penalty: 0
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        // if (data.choices[0].text === "\n\nNo") {
+        //   console.log(text[i].body)
+        //   temp.push(text[i])
+        // }
+      })
+      .catch(error => console.error(error))
   }, [])
 
   return (
