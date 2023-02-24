@@ -17,10 +17,17 @@ Examples of Emoticons Comment:
 
 - TypeScript
 
+## Problems
+
+- Handling of all the comments.
+  - Keeping a database of all the processed comments by give each 
+
 # Chat GPT
 ## Prompt with Examples
 
-**Prompt:** *Does this sentence, `{sentence}`, contain an emoji? Yes or No?*
+**Prompt:** 
+
+    Does this sentence, `{sentence}`, contain an emoji? Yes or No?
 <table style="margin-bottom: 40px">
   <tr>
     <th>#</th>
@@ -44,7 +51,9 @@ Examples of Emoticons Comment:
   </tr>
 </table>
 
-**Prompt:** Is this sentence, `{sentence}`, emoticon? Yes or No.
+**Prompt:** 
+
+    Is this sentence, `{sentence}`, emoticon? Yes or No.
 <table>
   <tr>
     <th>#</th>
@@ -73,4 +82,18 @@ Examples of Emoticons Comment:
   </tr>
 </table>
 
-**Prompt** Anaylze the string, `{string}` to see if the contain strings that are not emoticon. Response with just a Yes or No`
+**Prompt** 
+
+    Anaylze the string, `{string}` to see if the contain strings that are not emoticon. Response with just a Yes or No
+
+**Prompt** 
+
+    Content: Emoticon sentence is a sentence where there is a majority of emojis, emoticons, or abbreviation slang terms in the sentence.
+    
+    Given an array of objects, determine if the 'body' key of each object is an emoticon sentence. Return a boolean array with the same length as the input array, where each element is true if the corresponding object is an emoticon sentence, and false otherwise.
+    
+    Array:
+    ${JSON.stringify(data.comments, null, 2)}
+    Output:
+
+Result: Boolean array to tell if this sentence is an emoticon sentence or not.
