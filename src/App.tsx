@@ -12,15 +12,11 @@ interface AppProps {
 }
 
 function App() {
-  const [comments, setComments] = useState<AppProps[] | []>(data.comments)
+  const [comments, setComments] = useState<AppProps[] | []>([])
   const [emoticons, setEmoticons] = useState<AppProps[] | []>([])
+  const file = data.comments
 
   useEffect(() => {
-    let temp = []
-    for(const  item of data.comments) {
-      temp.push(item.body)
-    }
-    // console.log(temp)
     const prompt = `
     Content: Emoticon sentence is a sentence where there is a majority of emojis, emoticons, or abbreviation slang terms in the sentence.
 
@@ -53,14 +49,22 @@ function App() {
       .then(data => {
         const output = data.choices[0].text.trim();
         const result = JSON.parse(output);
-        console.log(result);
-        // if (data.choices[0].text === "\n\nNo") {
-        //   console.log(text[i].body)
-        //   temp.push(text[i])
-        // }
+        
+        let tempEmoticons = []
+        let tempComments = []
+        for(let i = 0; i < result.length; i++) {
+          if(result[i]) {
+            tempEmoticons.push(file[i])
+          } else {
+            tempComments.push(file[i])
+          }
+        }
+        console.log(tempEmoticons, tempComments)
+        setComments(tempComments)
+        setEmoticons(tempEmoticons)
       })
       .catch(error => console.error(error))
-  }, [])
+  }, [file])
 
   return (
     <main className='container'>
