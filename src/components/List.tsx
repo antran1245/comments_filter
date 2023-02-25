@@ -31,13 +31,13 @@ export default function List({ comments, emoticons } : ListProps) {
         selection?
         comments.map((item: AppProps, index: number) => {
           return <div key={index} className="commentBox">
-            <p>{item.date}</p>
+            <p>Date Posted: {item.date}</p>
             <p>{item.body}</p>
           </div>
         }):
         emoticons.map((item: AppProps, index: number) => {
           return <div key={index} className="commentBox">
-            <p>{item.date}</p>
+            <p>Date Posted: {item.date}</p>
             <p>{item.body}</p>
           </div>
         })

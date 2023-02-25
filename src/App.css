@@ -13,6 +13,8 @@
 }
 .container > div {
   padding: 10px;
+  width: 30%;
+  min-width: 300px;
 }
 
 /* Heading file stylings */
@@ -33,7 +35,7 @@ h1 {
 
 /* Comment Form */
 form, .commentLine {
-  width: 40%;
+  width: 100%;
 }
 .commentLine {
   border-bottom: 1px solid rgb(88, 88, 88);
@@ -85,12 +87,15 @@ input.commentLine:focus-visible {
 /* Comments Box */
 .commentBox {
   padding: 10px 0;
+  border-bottom: 1px solid rgb(88, 88, 88);
 }
 
 /* List styling */
 .tabGroup {
   display: flex;
   margin-top: 10px;
+  border-bottom: 1px solid white;
+  border-bottom-left-radius: 7px;
 }
 .tab {
   width: 100px;
