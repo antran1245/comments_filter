@@ -11,7 +11,7 @@ interface ListProps {
     id: number;
     date: string;
     body: string;
-  }[] | []
+  }[] | [];
   emoticons: {
     id: number;
     date: string;

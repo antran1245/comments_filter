@@ -118,7 +118,7 @@ function App() {
   return (
     <main className='container'>
       <div>
-        <Heading comments={comments}/>
+        <Heading comments={comments} emoticons={emoticons} />
         <Comment processComment={processComment}/>
         <List comments={comments} emoticons={emoticons}/>
       </div>

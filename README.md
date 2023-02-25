@@ -8,6 +8,7 @@ Examples of Emoticons Comment:
 - lol
 - lmao
 - 😀
+- Congrats :)
 
 ## Run
 
@@ -19,8 +20,9 @@ Examples of Emoticons Comment:
 
 ## Problems
 
-- Handling of all the comments.
-  - Keeping a database of all the processed comments by give each 
+- Handling a large a database of comments.
+  - Keeping a database of all the processed comments by giving each comment object with boolean value of emoticon or not.
+- Getting a more accuracy result when process the comments.
 
 # Chat GPT
 ## Prompt with Examples

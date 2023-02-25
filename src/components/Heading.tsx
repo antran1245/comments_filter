@@ -5,10 +5,15 @@ interface HeadingProps {
     id: number;
     date: string;
     body: string;
+  }[] | [];
+  emoticons: {
+    id: number;
+    date: string;
+    body: string;
   }[] | []
 }
 
-export default function Heading({comments} : HeadingProps) {
+export default function Heading({comments, emoticons} : HeadingProps) {
   return(
     <>
       <div>
@@ -18,7 +23,7 @@ export default function Heading({comments} : HeadingProps) {
         <p>Emoticons</p>
       </div>
       <div className="countComment">
-        <p>{comments.length !== 0 ? comments.length : ""} Comments</p>
+        <p>{comments.length !== 0 ? comments.length+emoticons.length : ""} Comments</p>
         <div>
           <img src={sortIcon} alt="sort" className='icon' />
           <p>Sort by</p>
