@@ -33,8 +33,7 @@ h1 {
 
 /* Comment Form */
 form, .commentLine {
-  width: 30%;
-  min-width: 300px;
+  width: 40%;
 }
 .commentLine {
   border-bottom: 1px solid rgb(88, 88, 88);
@@ -86,4 +85,24 @@ input.commentLine:focus-visible {
 /* Comments Box */
 .commentBox {
   padding: 10px 0;
+}
+
+/* List styling */
+.tabGroup {
+  display: flex;
+  margin-top: 10px;
+}
+.tab {
+  width: 100px;
+  border: 1px solid white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 7px;
+  padding: 6px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.tab:hover, .tab.active {
+  background-color: white;
+  color: black;
 }

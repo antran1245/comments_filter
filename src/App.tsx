@@ -71,7 +71,7 @@ function App() {
       <div>
         <Heading comments={comments}/>
         <Comment/>
-        <List comments={comments}/>
+        <List comments={comments} emoticons={emoticons}/>
       </div>
     </main>
   );
