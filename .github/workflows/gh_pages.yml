@@ -1,23 +1,23 @@
 name: Deploying Github Pages
-  on:
-    push:
-      branches:
-        - master
-  jobs:
-    build-and-deploy:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v2
-        - name: Build
-          run : |
-            npm install
-            npm run-script build
-          env:
-            REACT_APP_OPENAI_API_KEY: ${{secrets.OPENAI_API_KEY}}
-        - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.4
-        with:
-          branch: gh-pages
-          folder: build
-          token: ${{secrets.TOKEN_KEY}}
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build
+        run : |
+          npm install
+          npm run-script build
+        env:
+          REACT_APP_OPENAI_API_KEY: ${{secrets.OPENAI_API_KEY}}
+      - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@4.1.4
+      with:
+        branch: gh-pages
+        publish_dir: build
+        token: ${{secrets.TOKEN_KEY}}
