@@ -25,7 +25,7 @@ function App() {
     const prompt = `
     Content: Emoticon sentence is a sentence where there is a majority of emojis, emoticons, or abbreviation slang terms in the sentence.
 
-    Given an array of objects, determine if the 'body' key of each object is an emoticon sentence. Return a boolean array with the same length as the input array, where each element is true if the corresponding object is an emoticon sentence, and false otherwise.
+    Given an array of objects, determine if the 'body' key of each object is an emoticon sentence. Return a boolean array with the same length as the input array, where each element is true if the corresponding object when split into an array by space between word and 80% more of the array is emoticon, and false otherwise.
 
     Array:
     ${JSON.stringify(data.comments, null, 2)}
@@ -52,20 +52,22 @@ function App() {
     })
       .then(response => response.json())
       .then(data => {
-        const result = JSON.parse(data.choices[0].text.trim());
-        
-        // Filter the result out from an array of boolean
-        let tempEmoticons = []
-        let tempComments = []
-        for(let i = 0; i < result.length; i++) {
-          if(result[i]) {
-            tempEmoticons.push(file[i])
-          } else {
-            tempComments.push(file[i])
+        if("choices" in data) {
+          const result = JSON.parse(data.choices[0].text.trim());
+          
+          // Filter the result out from an array of boolean
+          let tempEmoticons = []
+          let tempComments = []
+          for(let i = 0; i < result.length; i++) {
+            if(result[i]) {
+              tempEmoticons.push(file[i])
+            } else {
+              tempComments.push(file[i])
+            }
           }
+          setComments(tempComments)
+          setEmoticons(tempEmoticons)
         }
-        setComments(tempComments)
-        setEmoticons(tempEmoticons)
       })
       .catch(error => console.error(error))
   }, [file])
@@ -115,10 +117,16 @@ function App() {
       .catch(err => console.log("Create Comment: ",err))
   }
 
+  const reverseComment = () => {
+    let tempComment = [...comments].reverse()
+    let tempEmoticons = [...emoticons].reverse()
+    setComments(tempComment)
+    setEmoticons(tempEmoticons)
+  }
   return (
     <main className='container'>
       <div>
-        <Heading comments={comments} emoticons={emoticons} />
+        <Heading comments={comments} emoticons={emoticons} reverseComment={reverseComment}/>
         <Comment processComment={processComment}/>
         <List comments={comments} emoticons={emoticons}/>
       </div>
