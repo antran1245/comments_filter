@@ -37,7 +37,7 @@ function App() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + apiKey
+        'Authorization': 'Bearer sk-' + apiKey?.replace('sk-', '')
       },
       body: JSON.stringify({
         prompt: prompt,
