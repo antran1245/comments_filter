@@ -32,7 +32,7 @@ function App() {
 
     Output:
     `;
-    const apiKey = process.env.OPENAI_API_KEY
+    const apiKey = process.env.REACT_APP_OPENAI_API_KEY
     console.log(apiKey)
     fetch('https://api.openai.com/v1/completions', {
       method: 'POST',
