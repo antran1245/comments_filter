@@ -82,7 +82,7 @@ function App() {
     Sentence: ${JSON.stringify(text)}
     Output:
     `
-    const apiKey = process.env.REACT_APP_API_KEY
+    const apiKey = process.env.REACT_APP_OPENAI_API_KEY
     fetch('https://api.openai.com/v1/completions', {
       method: 'POST',
       headers: {
@@ -102,17 +102,18 @@ function App() {
     })
       .then(response => response.json())
       .then(data => {
-
-        // Parse the data, then push the text into an obj format for {id, date, body}.
-        // Push into the proper array.
-        const result = JSON.parse(data.choices[0].text.trim());
-        const obj = { id: len + 1, date: (new Date()).toLocaleDateString('en-US'), body: text}
-        if(result[0]) {
-          setEmoticons([...emoticons, obj])
-        } else {
-          setComments([...comments, obj])
+        if ("choices" in data) {
+          // Parse the data, then push the text into an obj format for {id, date, body}.
+          // Push into the proper array.
+          const result = JSON.parse(data.choices[0].text.trim());
+          const obj = { id: len + 1, date: (new Date()).toLocaleDateString('en-US'), body: text}
+          if(result[0]) {
+            setEmoticons([...emoticons, obj])
+          } else {
+            setComments([...comments, obj])
+          }
+          setLen(len+1)
         }
-        setLen(len+1)
       })
       .catch(err => console.log("Create Comment: ",err))
   }
