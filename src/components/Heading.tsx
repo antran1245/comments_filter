@@ -19,6 +19,9 @@ export default function Heading({ comments, emoticons, reverseComment } : Headin
   const [sort, setSort] = useState<boolean>(false)
   const [display, setDisplay] = useState<{[key: string]: number}>({})
 
+  /**
+   * Filter out the emojis from emoticons. Then pushing to array to show display.
+   */
   useEffect(() => {
     let emojis : {[key: string] : number} = {}
     for(let i = 0; i < emoticons.length; i++) {
@@ -37,12 +40,16 @@ export default function Heading({ comments, emoticons, reverseComment } : Headin
     setDisplay(emojis)
   }, [emoticons])
   
+  // Reversing the display of the comments depending on the date.
   const reversingIcon = () => {
     setSort(!sort)
     reverseComment()
   }
   return(
     <>
+      <div>
+        <img src={"https://placehold.jp/1080x500.png"} alt="placeholder video"/>
+      </div>
       <div>
         <h1>
           Comment Section

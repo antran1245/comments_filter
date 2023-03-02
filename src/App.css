@@ -9,7 +9,7 @@
 .container {
   background-color: black;
   min-height: 100vh;
-  min-width: 100vw;
+  min-width: 100%;
 }
 .container > div {
   padding: 10px;
